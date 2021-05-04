@@ -23,3 +23,15 @@
     </div>
   </nav>
 </header>
+<div class='row'>
+  <div class='col-md-10 offset-md-1 text-center' style="margin-top: 5px;">
+  <% if user_signed_in? %>
+    <%= form_with url:search_path, method: :get, local:true do |f| %>
+    <%= f.text_field :word %>
+    <%= f.select :range, options_for_select([['User'], ['Book']]) %>
+    <%= f.select :how, options_for_select([["完全一致","match"], ["前方一致","front"], ["後方一致","backward"], ["部分一致","piece"]]) %>
+    <%= f.submit "検索" %>
+    <% end %>
+  <% end %>
+  </div>
+</div>
